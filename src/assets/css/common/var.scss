@@ -1,0 +1,163 @@
+// 响应尺寸
+$--sm: 768px;
+$--md: 992px;
+$--lg: 1200px;
+$--xl: 1920px;
+// 响应式断点
+$--breakpoints: (
+  'xs': (max-width: $--sm - 1),
+  'sm': (min-width: $--sm),
+  'md': (min-width: $--md),
+  'lg': (min-width: $--lg),
+  'xl': (min-width: $--xl)
+);
+//  基于断点的隐藏
+$--breakpoints-spec: (
+  'xs-only': (max-width: $--sm - 1),
+  'sm-only': (min-width: $--sm),
+  'sm-and-down': (min-width: $--sm) and (max-width: $--md - 1),
+  'sm-and-up': (min-width: $--sm),
+  'md-only': (min-width: $--md),
+  'md-and-down':(min-width: $--md) and (max-width: $--lg - 1),
+  'md-and-up': (min-width: $--md),
+  'lg-only': (min-width: $--lg),
+  'lg-and-down':(min-width: $--lg) and (max-width: $--xl - 1),
+  'lg-and-up': (min-width: $--lg),
+  'xl-only': (min-width: $--xl),
+);
+/**
+主色
+---------------*/
+$--color-primary: #409EFF !default;
+$--color-white: #fff !default;
+$--color-black: #000 !default;
+$--color-transparent: transparent !default;
+$--color-primary-light-1: mix($--color-white, $--color-primary, 10%) !default;
+$--color-primary-light-2: mix($--color-white, $--color-primary, 20%) !default;
+$--color-primary-light-3: mix($--color-white, $--color-primary, 30%) !default;
+$--color-primary-light-4: mix($--color-white, $--color-primary, 40%) !default;
+$--color-primary-light-5: mix($--color-white, $--color-primary, 50%) !default;
+$--color-primary-light-6: mix($--color-white, $--color-primary, 60%) !default;
+$--color-primary-light-7: mix($--color-white, $--color-primary, 70%) !default;
+$--color-primary-light-8: mix($--color-white, $--color-primary, 80%) !default;
+$--color-primary-light-9: mix($--color-white, $--color-primary, 90%) !default;
+/**
+辅助色
+除了主色外的场景色，需要在不同的场景中使用（例如危险色表示危险的操作）
+-----------------*/
+// 成功色
+$--color-success: #67C23A;
+$--color-success-light: mix($--color-white, $--color-success, 80%) !default;
+$--color-success-lighter: mix($--color-white, $--color-success, 90%) !default;
+// 警告色
+$--color-warning: #E6A23C;
+$--color-warning-light: mix($--color-white, $--color-warning, 80%) !default;
+$--color-warning-lighter: mix($--color-white, $--color-warning, 90%) !default;
+// 危险色
+$--color-danger: #F56C6C;
+$--color-danger-light: mix($--color-white, $--color-danger, 80%) !default;
+$--color-danger-lighter: mix($--color-white, $--color-danger, 90%) !default;
+// 信息色
+$--color-info: #909399;
+$--color-info-light: mix($--color-white, $--color-info, 80%) !default;
+$--color-info-lighter: mix($--color-white, $--color-info, 90%) !default;
+/**
+中性色
+中性色用于文本、背景和边框颜色。通过运用不同的中性色，来表现层次结构。
+--------------*/
+// 字体图标路径
+$--font-path: 'fonts';
+// 主要文字
+$--color-text-primary: #303133;
+// 常规文字
+$--color-text-routine: #606266;
+// 次要文字
+$--color-text-secondary: #909399;
+// 占位文字
+$--color-text-placeholder: #C0C4CC;
+// 一级边框
+$--border-color-base: #dcdfe6;
+// 二级边框
+$--border-color-light: #E4E7ED;
+// 三级边框
+$--border-color-lighter: #EBEEF5;
+// 四级边框
+$--border-color-extra-light: #F2F6FC;
+
+/** 字号
+-------------------------------*/
+$--font-size-extra-large: 20px !default; // 主标题
+$--font-size-large: 18px !default; // 标题
+$--font-size-medium: 16px !default; // 小标题
+$--font-size-base: 14px !default; // 正文
+$--font-size-small: 13px !default; // 正文（小）
+$--font-size-extra-small: 12px !default; // 正文（小）
+$--font-weight-primary: 500 !default;
+
+/** 边框
+----------------------------*/
+$--border-width-base: 1px !default;
+$--border-style-base: solid !default;
+$--border-base: 1px solid $--border-color-base !default;
+$--border-radius-base: 4px !default; // 大圆角
+$--border-radius-small: 2px !default; // 小圆角
+$--border-radius-zero: 0 !default; // 无圆角
+$--box-shadow-base: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04) !default;
+$--box-shadow-light: 0 2px 12px 0 rgba(0, 0, 0, .1) !default;
+
+/**
+Button
+----------*/
+// 基础样式
+$--button-padding-vertical: 12px!default;
+$--button-padding-horizontal: 20px!default;
+// 不同尺寸button的样式
+// medium 中等按钮
+$--button-medium-padding-vertical: 10px!default;
+$--button-medium-padding-horizontal: 20px!default;
+$--button-medium-font-size: $--font-size-base !default;
+$--button-medium-border-radius: $--border-radius-base !default;
+// small 小型按钮
+$--button-small-padding-vertical: 9px!default;
+$--button-small-padding-horizontal: 15px!default;
+$--button-small-font-size: $--font-size-extra-small !default;
+$--button-small-border-radius: #{$--border-radius-base - 1} !default;
+// mini 超小型按钮
+$--button-mini-padding-vertical: 7px!default;
+$--button-mini-padding-horizontal: 15px!default;
+$--button-mini-font-size: $--font-size-extra-small !default;
+$--button-mini-border-radius: #{$--border-radius-base - 2} !default;
+
+
+$--button-font-size: $--font-size-base!default;
+$--button-font-weight: $--font-weight-primary !default;
+$--button-border-radius: $--border-radius-base !default;
+
+// 默认样式
+$--button-default-background-color: $--color-white !default;
+$--button-default-border-color: $--border-color-base !default;
+$--button-default-font-color: $--color-text-routine !default;
+
+// success
+$--button-success-background-color: $--color-success !default;
+$--button-success-border-color: $--color-success !default;
+$--button-success-font-color: $--color-white !default;
+// primary 主要
+$--button-primary-background-color: $--color-primary !default;
+$--button-primary-border-color: $--color-primary !default;
+$--button-primary-font-color: $--color-white !default;
+// info 信息
+$--button-info-background-color: $--color-info !default;
+$--button-info-border-color: $--color-info !default;
+$--button-info-font-color: $--color-white !default;
+// warning 警告
+$--button-warning-background-color: $--color-warning !default;
+$--button-warning-border-color: $--color-warning !default;
+$--button-warning-font-color: $--color-white !default;
+// danger 危险
+$--button-danger-background-color: $--color-danger !default;
+$--button-danger-border-color: $--color-danger !default;
+$--button-danger-font-color: $--color-white !default;
+
+$--button-active-shade-percent: 10% !default;
+$--button-hover-tint-percent: 20% !default;

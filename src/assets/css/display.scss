@@ -1,0 +1,17 @@
+@import './mixins//mixins.scss';
+// 使用hidden-xs-only 类名
+//  display: none
+.hidden {
+  // &-xs-only {
+  //   @media screen and (max-width: 768px - 1) {
+  //     display:  none;
+  //   }
+  // }
+  @each $break-points-name, $value in $--breakpoints-spec {
+    &-#{$break-points-name} {
+      @include res($break-points-name, $--breakpoints-spec) {
+        display: none !important;
+      }
+    }
+  }
+}

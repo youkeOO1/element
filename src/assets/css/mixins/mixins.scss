@@ -1,0 +1,56 @@
+@import './config.scss';
+@import '../common/var.scss';
+// 混入， 通过@include指令将混入添加到@include指令处
+// b   e   m 
+// 块 元素 修饰符
+// 混入块 b
+@mixin b($block) {
+  // 声明变量
+  // mixmin 块的代码会被添加到@include指令处
+  // 该声明的变量也会
+  $B : $nameSpace + '-' + $block;
+  // @at-root 会只混入@at-root块内的代码，块外的不会混入
+  @at-root {
+    // 通过 #{} 插值语句可以在选择器或属性名中使用变量：
+    .#{$B} {
+      // 类似于vue的插槽
+      @content;
+    }
+  }
+}
+// 混入 m: 修饰符
+//  &--flex
+@mixin m($modifier) {
+  $selector: &;
+  $currentSelector: '';
+  @each $unit in $modifier {
+    $currentSelector: $currentSelector + $selector + $modifier-separator+ $unit;
+  }
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+}
+/**
+* 对齐方式
+*/
+@mixin when($state) {
+  @at-root {
+    &.#{$state-perfix + $state} {
+      @content;
+    }
+  }
+}
+/**
+* 媒体查询
+**/
+@mixin res($key, $map: $--breakpoints) {
+  @if map-has-key($map, $key) {
+    @media only screen and #{inspect(map-get($map, $key))} {
+      @content;
+    }
+  } @else {
+    @warn "undefined points: `#{$map}`"
+  }
+};

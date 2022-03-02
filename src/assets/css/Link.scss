@@ -1,0 +1,78 @@
+@import './mixins/mixins.scss';
+$link-font-size-base: $--font-size-base;
+$link-font-weight-base: 500px;
+$map: (
+  primary: $--color-primary,
+  success: $--color-success,
+  warning: $--color-warning,
+  danger: $--color-danger,
+  info: $--color-info,
+
+  );
+
+@include b(link) {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  outline: none;
+  position: relative;
+  padding: 0;
+  cursor: pointer;
+  vertical-align: middle;
+
+  font-size: $link-font-size-base;
+  font-weight: $link-font-weight-base;
+  [class*=el-icon-] {
+    & + span {
+      margin-left: 5px;
+    }
+  }
+  @include m(default) {
+    color: $--color-text-routine;
+    &:hover {
+      color: $--color-primary;
+    }
+    @include when(disabled) {
+      color: mix($--color-white , $--color-text-routine, 50%);
+      &:hover::after {
+        display: none;
+      }
+    }
+  }
+  @include when (underline) {
+    &:hover::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 0;
+      bottom: 0;
+      border-bottom:$--border-width-base $--border-style-base $--color-primary;
+    }
+  }
+  @include when(disabled) {
+    cursor: not-allowed;
+    color: #c0c4cc;
+  }
+  @each $type, $color in $map {
+    @include m ($type) {
+      color: $color;
+      &:hover {
+        color: mix($--color-white, $color, 20%);
+      }
+      @include when(underline) {
+        &:hover::after{
+          border-bottom-color: $color;
+        }
+      }
+      @include when(disabled) {
+        color: mix($--color-white , $color, 50%);
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+}

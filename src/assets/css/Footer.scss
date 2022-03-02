@@ -1,0 +1,6 @@
+@import './mixins/mixins.scss';
+@include b (footer) {
+  box-sizing: border-box;
+  padding: 0 20px;
+  flex-shrink: 0;
+}
